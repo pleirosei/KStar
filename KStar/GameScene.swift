@@ -11,12 +11,15 @@ import SpriteKit
 class GameScene: SKScene {
     override func didMoveToView(view: SKView) {
         /* Setup your scene here */
+        self.backgroundColor = SKColor.blackColor()
+        
         let myLabel = SKLabelNode(fontNamed:"Chalkduster")
         myLabel.text = "Hello, World!";
         myLabel.fontSize = 65;
         myLabel.position = CGPoint(x:CGRectGetMidX(self.frame), y:CGRectGetMidY(self.frame));
         
-        self.addChild(myLabel)
+//        self.addChild(myLabel)
+        self.loadStarField()
     }
     
     override func touchesBegan(touches: NSSet, withEvent event: UIEvent) {
@@ -41,5 +44,11 @@ class GameScene: SKScene {
    
     override func update(currentTime: CFTimeInterval) {
         /* Called before each frame is rendered */
+    }
+    
+    func loadStarField() {
+        let starField = KGStarFieldNode()
+        self.addChild(starField)
+        starField.beginSpawningStars()
     }
 }
